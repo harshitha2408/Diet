@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet & Exercise Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Diet & Exercise Tracker</h1>
+        <div class="input-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" oninput="setDateTime()">
+        </div>
+        <div class="input-group">
+            <label for="calendar">Select Date:</label>
+            <input type="date" id="calendar" onchange="loadReport()">
+        </div>
+        <div class="output-group">
+            <h2 id="greeting"></h2>
+        </div>
+        <h2>Enter Your Weight (kg):</h2>
+        <div class="input-group">
+            <input type="number" id="weight" min="0" placeholder="Enter your weight">
+        </div>
+        <h2>Drink Selection</h2>
+        <div class="input-group">
+            <label for="drink">Select Your Drink:</label>
+            <select id="drink" onchange="displayDrinkRecipe()">
+                <option value="" disabled selected>Select a drink</option>
+                <option value="Lemon Detox Water">Lemon Detox Water</option>
+                <option value="Ginger Tea">Ginger Tea</option>
+                <option value="Cucumber Mint Water">Cucumber Mint Water</option>
+                <option value="Cinnamon Apple Drink">Cinnamon Apple Drink</option>
+                <option value="Green Tea">Green Tea</option>
+                <option value="Jeera Water">Jeera Water</option>
+                <option value="Pineapple Juice">Pineapple Juice</option>
+            </select>
+        </div>
+        <div id="drink-recipe"></div>
+        <h2>Meals</h2>
+        <div class="input-group">
+            <label>Breakfast:</label>
+            <select id="breakfast" onchange="updateCalories('breakfast')">
+                <option value="" disabled selected>Select breakfast</option>
+                <option value="Ragi Malt">Ragi Malt</option>
+                <option value="Idly">Idly</option>
+                <option value="Dosa">Dosa</option>
+                <option value="Puliogare">Puliogare</option>
+                <option value="Milk">Milk</option>
+            </select>
+            <span id="breakfast-calories">0 cal</span>
+        </div>
+        <div class="input-group">
+            <label>Lunch:</label>
+            <select id="lunch" onchange="updateCalories('lunch')">
+                <option value="" disabled selected>Select lunch</option>
+                <option value="Roti">Roti</option>
+                <option value="Rice">Rice</option>
+            </select>
+            <span id="lunch-calories">0 cal</span>
+        </div>
+        <div class="input-group">
+            <label>Evening:</label>
+            <select id="evening" onchange="updateCalories('evening')">
+                <option value="" disabled selected>Select evening snack</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Veggies">Veggies</option>
+            </select>
+            <span id="evening-calories">0 cal</span>
+        </div>
+        <div class="input-group">
+            <label>Dinner:</label>
+            <select id="dinner" onchange="updateCalories('dinner')">
+                <option value="" disabled selected>Select dinner</option>
+                <option value="Chapati">Chapati</option>
+                <option value="Rice">Rice</option>
+            </select>
+            <span id="dinner-calories">0 cal</span>
+        </div>
+
+        <button onclick="checkCaloriesConsumed()">Check Calories Consumed</button>
+
+        <h2>Daily Exercise</h2>
+        <div class="input-group">
+            <label>
+                <input type="checkbox" id="morning-exercise"> Morning Exercise
+            </label>
+            <input type="number" id="morning-mins" placeholder="Minutes" min="0">
+        </div>
+        <div class="input-group">
+            <label>
+                <input type="checkbox" id="evening-exercise"> Evening Exercise
+            </label>
+            <input type="number" id="evening-mins" placeholder="Minutes" min="0">
+        </div>
+        <button onclick="checkCaloriesBurnt()">Check Calories Burnt</button>
+
+        <h2>Water Intake</h2>
+        <div class="input-group">
+            <label for="water-intake">Total Water Intake (liters):</label>
+            <input type="number" id="water-intake" min="0" placeholder="Enter your total water intake">
+        </div>
+
+        <h2>Today's Intake</h2>
+        <div class="input-group">
+            <label>Did you consume any sugar items?</label>
+            <input type="text" id="sugar-items" placeholder="Enter if any">
+        </div>
+        <button onclick="generateReport()">Generate Report</button>
+
+        <div class="output-group">
+            <h2 id="report"></h2>
+            <p>Total Calories Consumed: <span id="total-calories-consumed">0</span> cal</p>
+            <p>Total Calories Burnt: <span id="total-calories-burnt">0</span> cal</p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
